@@ -63,7 +63,7 @@ export const logout = CatchAsyncError(async (req, res, next) => {
   const options = {
     expires: new Date(Date.now()),
     httpOnly: true,
-    // secure: true,
+    secure: true,
     sameSite: "none",
   };
   res.status(200).cookie("token", null, options).json({
@@ -294,7 +294,7 @@ export const deleteMyProfile = CatchAsyncError(async (req, res, next) => {
   const options = {
     expires: new Date(Date.now()),
     httpOnly: true,
-    // secure: true,
+    secure: true,
     sameSite: "none",
   };
   res.status(200).cookie("token", null, options).json({

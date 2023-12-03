@@ -6,7 +6,7 @@ import paymentRouter from "./Routes/paymentRoutes.js";
 import { ErrorMiddleware } from "./Middleware/ErrorMiddleware.js";
 import cookieParser from "cookie-parser";
 import otherRouter from "./Routes/otherRoutes.js";
-
+import cors from "cors";
 config({
   path: "./Config/config.env",
 });
@@ -19,6 +19,15 @@ app.use(
     extended: "true",
   })
 );
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
 app.use(cookieParser());
 
 /** Course Routes */
