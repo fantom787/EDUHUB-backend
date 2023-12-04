@@ -20,6 +20,10 @@ app.use(
   })
 );
 
+app.use(cookieParser());
+
+console.log(process.env.FRONTEND_URL);
+
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
@@ -27,8 +31,6 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
-app.use(cookieParser());
 
 /** Course Routes */
 app.use("/api/v1", courseRouter);
