@@ -22,16 +22,18 @@ app.use(
 
 app.use(cookieParser());
 
-console.log(process.env.FRONTEND_URL);
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://eduhub-frontend.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
 /** Course Routes */
 app.use("/api/v1", courseRouter);
 /** User Routes */
